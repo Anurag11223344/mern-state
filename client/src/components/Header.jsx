@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <header className='bg-slate-200 shadow-md'>
-        <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
+        <div className='flex justify-between items-center max-w-90 px-20 py-3 mx-auto'>
             <Link to='/'>
                 <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
                     <span className='text-slate-500'>Sahand</span>
                     <span className='text-slate-700'>Estate</span> 
                 </h1>
             </Link>
-            <form className='bg-slate-100 p-3 rounded-lg flex items-center'>
+            <form className='bg-slate-100 p-3 rounded-lg flex items-center ml-14'>
                 <input 
                     type="text" 
                     placeholder='Search...'
@@ -21,17 +21,17 @@ export default function Header() {
             </form>
             <ul className='flex gap-4'>
                 <Link to='/'>
-                <li className='hidden sm:inline text-slate-700 hover:underline'>
+                <li className='hidden sm:inline text-slate-700 hover:underline px-6'>
                     Home
                 </li>
                 </Link>
                 <Link to='/about'>
-                <li className='hidden sm:inline text-slate-700 hover:underline'>
+                <li className='hidden sm:inline text-slate-700 hover:underline px-6'>
                     About
                 </li>
                 </Link>
                 <Link to='signin'>
-                <li className='text-slate-700 hover:underline'>
+                <li className='text-slate-700 hover:underline px-6'>
                     SignIn
                 </li>
                 </Link>
