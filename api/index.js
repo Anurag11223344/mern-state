@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import userRouter from './routes/user.route.js';
 
 const username = 'Anurag';
 const password = encodeURIComponent('Anurag@123'); // Encode the password
@@ -19,3 +20,6 @@ const app = express();
 app.listen(3000, () => {
     console.log('Server is running on port 3000!!!');
 });
+
+//user request krega aur server response krega.
+app.use('/api/users', userRouter);
