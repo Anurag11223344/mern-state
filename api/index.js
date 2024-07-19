@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/user.route.js';
+import authRouter from './routes/auth.route.js';
 
 const username = 'Anurag';
 const password = encodeURIComponent('Anurag@123'); // Encode the password
@@ -17,9 +18,12 @@ mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/?retryWrites=
 });
 const app = express();
 
+app.use(express.json());
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000!!!');
 });
 
 //user request krega aur server response krega.
 app.use('/api/users', userRouter);
+app.use('/api/auth', authRouter);

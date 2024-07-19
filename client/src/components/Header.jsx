@@ -11,7 +11,7 @@ export default function Header() {
                     <span className='text-slate-700'>Estate</span> 
                 </h1>
             </Link>
-            <form className='bg-slate-100 p-3 rounded-lg flex items-center ml-14'>
+            <form className='bg-slate-100 p-3 rounded-lg flex items-center gap-2'>
                 <input 
                     type="text" 
                     placeholder='Search...'
@@ -21,7 +21,7 @@ export default function Header() {
             </form>
             <ul className='flex gap-4'>
                 <Link to='/'>
-                <li className='hidden sm:inline text-slate-700 hover:underline px-6'>
+                <li className='hidden sm:inline text-slate-700 hover:underline px-6 pl-0'>
                     Home
                 </li>
                 </Link>
@@ -31,7 +31,7 @@ export default function Header() {
                 </li>
                 </Link>
                 <Link to='signin'>
-                <li className='text-slate-700 hover:underline px-6'>
+                <li className='text-slate-700 hover:underline px-6 pr-0'>
                     SignIn
                 </li>
                 </Link>
