@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function SignUp() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({}); // [object , function]
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const handleChange = (e) => {
-    setFormData({
-        ...formData,
-        [e.target.id]: e.target.value,
+  const handleChange = (e) => { // this one is going to take one event
+    setFormData({ // this one is going to take the previous state and update the new state
+        ...formData,  // We want to keep the prev info.//for ex. we had written user name, we want to keep the info and then add the email. So we don't want to lose track of username info.
+        [e.target.id]: e.target.value, // Now we add the new changes.
       });
   };
 
@@ -18,7 +18,7 @@ export default function SignUp() {
     e.preventDefault(); // yeh page ko refresh nhi hone deta
     try {
       setLoading(true);
-      const res = await fetch('/api/auth/signup', 
+      const res = await fetch('/api/auth/signup',    // Our api route address is localhost:3000/api/auth/signup(insomnia)
         {
           method: 'POST',
           headers: {
