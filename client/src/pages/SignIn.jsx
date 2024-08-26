@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
+
 
 
 export default function SignIn() {
   const [formData, setFormData] = useState({}); // [object , function]
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleChange = (e) => { // this one is going to take one event
     setFormData({ // this one is going to take the previous state and update the new state
         ...formData,  // We want to keep the prev info.//for ex. we had written user name, we want to keep the info and then add the email. So we don't want to lose track of username info.
@@ -17,7 +20,8 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault(); // yeh page ko refresh nhi hone deta
     try {
-      setLoading(true);
+      // setLoading(true); // pehle yeh tha
+      dispatch(signInStart()); // redux lgane ke baad yeh lgaye
       const res = await fetch('/api/auth/signin',    // Our api route address is localhost:3000/api/auth/signup(insomnia)
         {
           method: 'POST',
@@ -30,16 +34,19 @@ export default function SignIn() {
       const data = await res.json();
 
       if(data.success === false){
-        setError(data.message);
-        setLoading(false);
+        // setError(data.message); // pehle yeh tha
+        // setLoading(false);// pehle yeh tha
+        dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null);
+      // setLoading(false); // pehle yeh tha
+      // setError(null); // pehle yeh tha
+      dispatch(signInSuccess(data));
       navigate('/');
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      // setLoading(false); // pehle yeh tha
+      // setError(error.message); // pehle yeh tha
+      dispatch(signInFailure(error.message));
     }
     
   };
