@@ -1,6 +1,10 @@
 import { useSelector } from "react-redux"
 import { useRef, useState, useEffect } from "react";
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, 
+  getStorage, 
+  ref, 
+  uploadBytesResumable 
+} from "firebase/storage";
 import { app } from "../firebase";
 import { 
   updateUserStart, 
@@ -62,6 +66,7 @@ export default function Profile() {
     setFormData({...formData, [e.target.id]: e.target.value});
   }
 
+  //Updating User credentials from the profile page
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
@@ -90,7 +95,7 @@ export default function Profile() {
     }
   }
 
-  //To delete User
+  //Deleting User credentials from the profile page
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());

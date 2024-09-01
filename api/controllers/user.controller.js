@@ -8,8 +8,9 @@ export const test = (req, res) => {
     });
 }
 
+// For update the user credentials in the profle page
 export const updateUser = async (req, res, next) => {
-    if(req.user.id !== req.params.id) return next(errorHandler(401, 'You can only update your own account'));
+    if(req.user.id !== req.params.id) return next(errorHandler(401, 'You can only update your own account')); // if id changed...then this error
         try {
             if(req.body.password) {
                 req.body.password = bcryptjs.hashSync(req.body.password, 10);
@@ -33,6 +34,7 @@ export const updateUser = async (req, res, next) => {
         }
 };
 
+// For delete account from the profile page
 export const deleteUser = async (req, res, next) => {
     if(req.user.id !== req.params.id) return next(errorHandler(401, 'You can only delete your own account'));
     try {
