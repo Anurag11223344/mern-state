@@ -14,8 +14,6 @@ const cluster = 'mern-estate.9d7kpch.mongodb.net';
 const dbname = 'mern-estate';
 
 mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/?retryWrites=true&w=majority&appName=${dbname}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
 }).then(() => {
     console.log('Connected to MongoDB');
 }).catch((error) => {
