@@ -53,11 +53,11 @@ export default function CreateListing() {
       if(files.length > 0 && files.length + formData.imageUrls.length < 7){
         // Check if all files are .jpg
         const validFiles = Array.from(files).every((file) => 
-          file.type === "image/jpeg" && file.size <= 50 * 1024
+          file.type === "image/jpeg" && file.size <= 5000 * 1024
       );
 
       if (!validFiles) {
-        setImageUploadError("Only .jpg images below 50KB are allowed.");
+        setImageUploadError("Only .jpg images below 5000KB are allowed.");
         return;
       }
 
@@ -331,7 +331,7 @@ export default function CreateListing() {
         <div className="flex flex-col flex-1 gap-4">
 
           <p className='font-semibold'>Images : 
-            <span className='font-normal text-gray-600 ml-2'>There is a limit of maximum 6 .jpeg images of size(0-50kb)</span>
+            <span className='font-normal text-gray-600 ml-2'>There is a limit of maximum 6 .jpeg images of size(0-5000kb)</span>
           </p>
 
           <div className='flex gap-4'>
